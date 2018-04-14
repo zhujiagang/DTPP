@@ -1,0 +1,6 @@
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c01/img_00116.jpg
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c02/img_00116.jpg
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c03/img_00116.jpg
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c04/img_00116.jpg
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c05/img_00116.jpg
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_ApplyEyeMakeup_g01_c06/img_00116.jpg

@@ -4,10 +4,10 @@ logs/
 3rd-party/
 
 # data files
-data/
+#data/
 
 # model folder
-models/
+#models/
 
 # IDEA project configs
 .idea/
