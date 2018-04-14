@@ -1,0 +1,5 @@
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_Hammering_g05_c04 73 34 11 47 58 61 72
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_Hammering_g01_c01 97 34 0 7 44 53 68 
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_Hammering_g07_c05 126 34 8 23 34 79 109
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_Hammering_g03_c04 130 34 14 29 59 90 129 
+/home/zjg/zjg/tsncaffe/UCF-101-result/v_Hammering_g04_c03 87 34 0 14 25 47 80
