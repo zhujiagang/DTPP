@@ -9,7 +9,7 @@ Jiagang Zhu, Wei Zou, Zheng Zhu,
 >
 [[Arxiv Preprint](https://arxiv.org/abs/1711.04161)]
 
-We are currently updating the code, it will be finished about in 2 weeks.
+We are currently updating the code, it will be finished in about 2 weeks.
 
 See the prototxts in models for the details of DTPP.
 
