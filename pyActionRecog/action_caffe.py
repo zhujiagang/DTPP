@@ -145,7 +145,7 @@ class CaffeNet(object):
             self._net.reshape()
             out = self._net.forward(blobs=[score_name,], data=data_ele)
             scores_new.append(out[score_name].copy())
-        scores_new = np.array(scores_new).reshape(10,101)
+        scores_new = np.array(scores_new).reshape(10,-1)
         return scores_new
 
 
@@ -199,7 +199,7 @@ class CaffeNet(object):
             self._net.reshape()
             out = self._net.forward(blobs=[score_name,], data=data_ele)
             scores_new.append(out[score_name].copy())
-        scores_new = np.array(scores_new).reshape(10,101)
+        scores_new = np.array(scores_new).reshape(10, -1)
         return scores_new
 
     def predict_single_flow_stack(self, frame, score_name, over_sample=True, frame_size=None):

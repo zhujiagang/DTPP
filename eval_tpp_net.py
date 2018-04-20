@@ -8,8 +8,8 @@ import multiprocessing
 from sklearn.metrics import confusion_matrix
 
 
-relative_path = "/data4/lilin/my_code"
-caffe_root = relative_path + '/tle/lib/caffe-tpp-net-python/'
+relative_path = "/home/lilin/my_code"
+caffe_root = relative_path + '/deeptemporal/lib/caffe-tpp-net-python/'
 sys.path.insert(0, caffe_root + 'python')
 
 from pyActionRecog import parse_directory
@@ -17,7 +17,12 @@ from pyActionRecog import parse_split_file
 
 from pyActionRecog.utils.video_funcs import default_aggregation_func
 
-net_weights = "/data4/lilin/my_code/ucf101_split_1_rgb_flow_models/ucf101_split_1_flow_tpp_freeze_cnn_lr_0.00001_iter_1200.caffemodel"
+# net_weights = "/home/lilin/my_code/ucf101_split_1_rgb_flow_models/ucf101_split_1_flow_tpp_seg_7_lr_0.0001_iter_900.caffemodel"
+net_weights = "/home/lilin/my_code/ucf101_split_1_rgb_flow_models/ucf101_split_1_rgb_tpp_seg_7_lr_0.00001_iter_300.caffemodel"
+
+
+memory_enough = False
+
 split = int(net_weights.split('split')[1].split('_')[1])
 
 str = net_weights.split('/')[-1]
@@ -33,19 +38,19 @@ else:
     dataset = 'hmdb51'
 
 if dataset == 'ucf101':
-    frame_path = "/sharedata/UCF-101-result/"
+    frame_path = relative_path + "/UCF-101-result/"
 else:
     frame_path = relative_path + "/HMDB-51-result/"
 
 # net_proto = relative_path + "/deeptemporal/models/"+ dataset + "/" + modality + "_tpp_delete_dropout_deploy.prototxt"
 
-net_proto = relative_path + "/tle/models/"+ dataset + "/" + modality + "_tpp_delete_dropout_deploy.prototxt"
+net_proto = relative_path + "/deeptemporal/models/"+ dataset + "/" + modality + "_tpp_seg_7_deploy.prototxt"
 
 rgb_prefix ='img_'
 flow_x_prefix ='flow_x_'
 flow_y_prefix ='flow_y_'
 num_frame_per_video = 25
-num_id = 3
+num_id = 1
 num_worker = 1
 num_scores = 1
 gpus = [1]
@@ -89,9 +94,11 @@ print "dataset: ", dataset, "split: ", split, "modality: ", modality, "gpu: ", n
 
 # save_scores = 'ucf101_split_1_flow_tpp_imagenet_lr_0.00001_iter_900'  ### 88.40%
 
-# save_scores = 'ucf101_split_1_rgb_tpp_freeze_cnn_lr_0.00001_iter_600'
-# save_scores = 'ucf101_split_1_rgb_tpp_batch_2_lr_0.0001_iter_300' ### 88.36%
-save_scores = 'ucf101_split_1_flow_tpp_freeze_cnn_lr_0.00001_iter_1200'
+# save_scores = 'ucf101_split_1_rgb_tpp_p124_ave_snapshot_lr_0.00001_iter_600' ### 87.77%
+
+# save_scores = 'ucf101_split_1_flow_tpp_seg_7_lr_0.0001_iter_900' ### 25 frames 88.48%
+save_scores = 'ucf101_split_1_rgb_tpp_seg_7_lr_0.00001_iter_300_25'
+
 
 ### kinetics
 # save_scores = 'hmdb51_split_1_rgb_tpp_kinetics_lr_0.00001_iter_336' ### 71.90%
@@ -146,9 +153,6 @@ def eval_video(video):
         raise ValueError(modality)
     frame_cnt = f_info[cnt_indexer][vid]
 
-    #print f_info[1][vid]
-    #print f_info[2][vid]
-
     stack_depth = 0
     if modality == 'rgb':
         stack_depth = 1
@@ -163,14 +167,6 @@ def eval_video(video):
     else:
         frame_ticks = [1] * num_frame_per_video
 
-    # average_duration_2 = (float)(1.0 * frame_cnt / num_frame_per_video)
-    # frame_ticks = []
-    # for i in range(num_frame_per_video):
-    #     if average_duration_2 >= stack_depth:
-    #         frame_ticks.append(int((average_duration_2-stack_depth+1)/2 + i*average_duration_2 + 1))
-    #     else:
-    #         frame_ticks.append(int( i * average_duration_2 + 1))
-
     assert(len(frame_ticks) == num_frame_per_video)
 
     frame_scores = []
@@ -182,7 +178,12 @@ def eval_video(video):
             name = '{}{:05d}.jpg'.format(rgb_prefix, tick)
             frame = cv2.imread(os.path.join(video_frame_path, name), cv2.IMREAD_COLOR)
             rgb_stack.append(frame)
-        scores = net.predict_single_rgb_stack(rgb_stack, score_name, frame_size=(340, 256),stack_len=num_frame_per_video)
+
+        if memory_enough is False:
+            scores = net.predict_single_rgb_stack_memory(rgb_stack, score_name, frame_size=(340, 256), stack_len=num_frame_per_video)
+        else:
+            scores = net.predict_single_rgb_stack(rgb_stack, score_name, frame_size=(340, 256),
+                                                         stack_len=num_frame_per_video)
         frame_scores.append(scores)
 
     if modality == 'flow':
@@ -202,7 +203,11 @@ def eval_video(video):
                 flow_one[:,:,ix] = frame_2
                 ix += 1
             flow_stack.append(flow_one)
-        scores = net.predict_single_flow_stack_test(flow_stack, score_name, frame_size=(340, 256))
+        if memory_enough is False:
+            scores = net.predict_single_flow_stack_test_memory(flow_stack, score_name, frame_size=(340, 256), stack_len=num_frame_per_video)
+        else:
+            scores = net.predict_single_flow_stack_test(flow_stack, score_name, frame_size=(340, 256))
+
         frame_scores.append(scores)
     global ii
     ii += 1

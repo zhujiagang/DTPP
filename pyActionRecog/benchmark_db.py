@@ -132,10 +132,10 @@ def parse_hmdb51_splits():
 
 def newparse_hmdb51_splits():
     # load split file
-    class_files = glob.glob('data/hmdb51_splits/*newsplit*.txt')
+    class_files = glob.glob('data/cart_wheel_hmdb51_splits/*split*.txt')
 
     # load class list
-    class_list = [x.strip() for x in open('data/hmdb51_splits/class_list.txt')]
+    class_list = [x.strip() for x in open('data/cart_wheel_hmdb51_splits/class_list.txt')]
     class_dict = {x: i for i, x in enumerate(class_list)}
 
     def parse_class_file(filename):

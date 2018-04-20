@@ -51,10 +51,53 @@ def video_mean_ap(score_dict, video_list):
 
 
 def mean_class_accuracy(scores, labels):
+
+
     pred = np.argmax(scores, axis=1)
+
     cf = confusion_matrix(labels, pred).astype(float)
 
     cls_cnt = cf.sum(axis=1)
     cls_hit = np.diag(cf)
+    cls_acc = cls_hit / cls_cnt
 
-    return np.mean(cls_hit/cls_cnt)
+    return np.mean(cls_hit/cls_cnt), cls_acc
+    # return
+
+
+def class_accuracy(scores, scores_1, labels):
+#     rgb = [x[0][0] for x in rgb]
+#     flow = [x[0][0] for x in flow]
+
+    def rr(aa,ii):
+        nn1 = aa[ii]
+        res = np.argsort(-nn1)
+        seq = nn1[res]
+        return res, seq
+    ii = 6
+
+
+    DTPP_1, DTPP_2 = rr(scores,ii)
+    DTPP_score = DTPP_2
+
+
+    TSN_1, TSN_2 = rr(scores_1, ii)
+    TSN_score = TSN_2
+
+    # rgb_1, rgb_2 = rr(rgb, ii)
+    # flow_1, flow_2 = rr(flow, ii)
+
+    pred_DTPP = np.argmax(scores, axis=1)
+
+    pred_TSN = np.argmax(scores_1, axis=1)
+
+
+    cf = confusion_matrix(labels, pred).astype(float)
+
+    cls_cnt = cf.sum(axis=1)
+    cls_hit = np.diag(cf)
+    cls_acc = cls_hit / cls_cnt
+
+    print cls_acc
+
+    return np.mean(cls_hit/cls_cnt), cls_acc
