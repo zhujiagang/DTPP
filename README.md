@@ -19,6 +19,7 @@ We follow the guidance provided by [TSN][tsn] to prepare the data. Please refer 
 
 ### Get the code
 
+
 Use git to clone this repository and its submodules
 ```
 git clone --recursive https://github.com/zhujiagang/DTPP.git
@@ -61,6 +62,7 @@ Please cite the following paper if you feel this repository useful.
   booktitle   = {ICPR},
   year      = {2018},
 }
+
 @inproceedings{TSN2016ECCV,
   author    = {Limin Wang and
                Yuanjun Xiong and
