@@ -1,4 +1,5 @@
 
+
 # DTPP
 
 This repository holds the codes and models for the paper
@@ -58,6 +59,18 @@ Please cite the following paper if you feel this repository useful.
   title     = {End-to-end Video-level Representation Learning for Action Recognition},
   booktitle   = {ICPR},
   year      = {2018},
+}
+@inproceedings{TSN2016ECCV,
+  author    = {Limin Wang and
+               Yuanjun Xiong and
+               Zhe Wang and
+               Yu Qiao and
+               Dahua Lin and
+               Xiaoou Tang and
+               Luc {Val Gool}},
+  title     = {Temporal Segment Networks: Towards Good Practices for Deep Action Recognition},
+  booktitle   = {ECCV},
+  year      = {2016},
 }
 ```
 
