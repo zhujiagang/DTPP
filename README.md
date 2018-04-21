@@ -19,7 +19,6 @@ We follow the guidance provided by [TSN][tsn] to prepare the data. Please refer 
 
 ### Get the code
 
-
 Use git to clone this repository and its submodules
 ```
 git clone --recursive https://github.com/zhujiagang/DTPP.git
@@ -51,10 +50,6 @@ For example, the following command runs training on HMDB51 with rgb input, with 
 bash hmdb_scripts_split_1/train_rgb_tpp_delete_dropout_split_1.sh
 ```
 The learned model weights will be saved in `snapshot/`.
-The aforementioned testing process can be used to evaluate them.
-
- 
-#Other Info
 
 ## Citation
 Please cite the following paper if you feel this repository useful.
