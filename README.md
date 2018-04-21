@@ -9,6 +9,7 @@ This repository holds the codes and models for the paper
 Jiagang Zhu, Wei Zou, Zheng Zhu,
 *ICPR 2018*, Beijing, China.
 >
+
 [[Arxiv Preprint](https://arxiv.org/abs/1711.04161)]
 
 We follow the guidance provided by [TSN][tsn] to prepare the data. Please refer to the [TSN][tsn] repository for guidance. Here we only provide the additional training details of DTPP.
@@ -36,7 +37,7 @@ bash get_kinetics_pretraining_models.sh
 ```
 
 ### Start training
-
+[[back to top](#dtpp)]
 Once all necessities ready, we can start training DTPP.
 Fro example, if we want to train on HMDB51.
 For example, the following command runs training on HMDB51 with rgb input, with its weights initialized by ImageNet pretraining.
