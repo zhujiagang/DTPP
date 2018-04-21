@@ -24,7 +24,10 @@ Use git to clone this repository and its submodules
 ```
 git clone --recursive https://github.com/zhujiagang/DTPP.git
 ```
-
+### Compile Caffe 
+cd lib/
+compile caffe-tpp-net/ with cmake and openmpi according to TSN for training models
+and compile caffe-tpp-net-python/ with python interface for evaluating models with python script.
 
 ### Get initialization models
 
