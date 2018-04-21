@@ -1,4 +1,4 @@
-#Deep Networks with Temporal Pyramid Pooling (DTPP)
+#DTPP
 
 This repository holds the codes and models for the paper
  
