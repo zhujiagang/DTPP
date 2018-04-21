@@ -9,7 +9,7 @@ test_initialization: true
 display: 20
 average_loss: 20
 snapshot: 300
-snapshot_prefix: "/home/lilin/my_code/ucf101_split_1_rgb_flow_models/ucf101_split_1_flow_tpp_delete_dropout_lr_0.001"
+snapshot_prefix: "snapshot/ucf101_split_1_flow_tpp_delete_dropout_lr_0.001"
 debug_info: false
 
 # learning rate

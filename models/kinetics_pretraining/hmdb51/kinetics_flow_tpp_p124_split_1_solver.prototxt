@@ -1,0 +1,30 @@
+net: "models/kinetics_pretraining/hmdb51/kinetics_flow_tpp_p124_split_1_train_val.prototxt"
+
+# testing parameter
+test_iter: 383
+test_interval: 112
+test_initialization: true
+
+# output
+display: 20
+average_loss: 20
+snapshot: 112
+snapshot_prefix: "snapshot/hmdb51_split_1_flow_tpp_kinetics_lr_0.00001"
+debug_info: false
+
+# learning rate
+base_lr: 0.00001
+lr_policy: "fixed"
+#gamma: 0.1
+#stepsize: 1500
+max_iter: 30000
+iter_size: 32
+
+# parameter of SGD
+momentum: 0.9
+weight_decay: 0.0005
+clip_gradients: 40
+
+# GPU setting
+solver_mode: GPU
+device_id: 1

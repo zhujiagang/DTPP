@@ -14,4 +14,4 @@ echo "logging to ${LOG_FILE}"
 ### /home/lilin/my_code/hmdb51_split_1_rgb_flow_models/hmdb51_split_1_rgb_tpp_delete_dropout_lr_0.0001_iter_112.caffemodel accuracy = 0.625
 
 $TOOLS/caffe train --solver=models/hmdb51/rgb_tpp_delete_dropout_split_1_solver.prototxt  \
-   --weights="/home/lilin/my_code/ucf101_split_1_rgb_flow_models/bn_inception_rgb_init.caffemodel"
+   --weights="init_models/bn_inception_rgb_init.caffemodel"

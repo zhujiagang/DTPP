@@ -9,7 +9,7 @@ test_initialization: true
 display: 20
 average_loss: 20
 snapshot: 112
-snapshot_prefix: "/home/lilin/my_code/hmdb51_split_1_rgb_flow_models/hmdb51_split_1_rgb_tpp_delete_dropout_lr_0.001"
+snapshot_prefix: "snapshot/hmdb51_split_1_rgb_tpp_delete_dropout_lr_0.001"
 debug_info: false
 
 # learning rate
