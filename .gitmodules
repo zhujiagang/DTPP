@@ -3,4 +3,7 @@
 	url = https://github.com/yjxiong/dense_flow
 [submodule "lib/caffe-tpp-net"]
 	path = lib/caffe-tpp-net
-	url = https://github.com/zhujiagang/caffe-tpp-net
+	url = git@github.com:zhujiagang/caffe-tpp-net.git
+[submodule "lib/dense-flow"]
+	path = lib/dense-flow
+	url = git@github.com:yjxiong/dense_flow.git
