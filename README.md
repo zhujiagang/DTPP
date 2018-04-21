@@ -53,7 +53,7 @@ The aforementioned testing process can be used to evaluate them.
 ## Citation
 Please cite the following paper if you feel this repository useful.
 ```
-@inproceedings{ICPR2018,
+@inproceedings{DTPP2018ICPR,
   author    = {Jiagang Zhu and
                Wei Zou and
                Zheng Zhu},
