@@ -10,7 +10,7 @@ Jiagang Zhu, Wei Zou, Zheng Zhu,
 >
 [[Arxiv Preprint](https://arxiv.org/abs/1711.04161)]
 
-We follow the guidance provided by TSN to prepare the data. Please refer to the TSN repository for guidance. Here we only provide the additional training details of DTPP.
+We follow the guidance provided by [TSN][tsn] to prepare the data. Please refer to the [TSN][tsn] repository for guidance. Here we only provide the additional training details of DTPP.
 
 # Usage Guide
 
@@ -67,3 +67,4 @@ For any question, please contact
 ```
 Jiagang Zhu: zhujiagang2015@ia.ac.cn
 ```
+[tsn]:https://github.com/yjxiong/temporal-segment-networks#temporal-segment-networks-tsn
