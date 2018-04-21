@@ -9,7 +9,7 @@ Jiagang Zhu, Wei Zou, Zheng Zhu,
 >
 [[Arxiv Preprint](https://arxiv.org/abs/1711.04161)]
 
-Below is the guidance to reproduce the reported results and explore more.
+We follow the guidance provided by TSN to prepare the data.
 
 # Contents
 * [Usage Guide](#usage-guide)
@@ -19,9 +19,6 @@ Below is the guidance to reproduce the reported results and explore more.
     * [Get the videos](#get-the-videos)
     * [Get trained models](#get-trained-models)
   * [Extract Frames and Optical Flow Images](#extract-frames-and-optical-flow-images)
-  * [Testing Provided Models](#testing-provided-models)
-    * [Get reference models](#get-reference-models)
-    * [Video-level testing](#video-level-testing)
   * [Training DTPP](#training-DTPP)
     * [Construct file lists for training and validation](#construct-file-lists-for-training-and-validation)
     * [Get initialization models](#get-initialization-models)
@@ -111,48 +108,6 @@ bash scripts/extract_optical_flow.sh SRC_FOLDER OUT_FOLDER NUM_WORKER
 
 It will take from several hours to several days to extract optical flows for the whole datasets, depending on the number of GPUs.  
 
-## Testing Provided Models
-
-### Get reference models
-[[back to top](#DTPP)]
-
-To help reproduce the results reported in the paper, we provide reference models trained by us for instant testing. Please use the following command to get the reference models.
-
-```
-bash scripts/get_reference_models.sh
-```
-
-### Video-level testing
-[[back to top](#DTPP)]
-
-We provide a Python framework to run the testing. For the benchmark datasets, we will measure average accuracy on the testing splits. We also provide the facility to analyze a single video.
-
-Generally, to test on the benchmark dataset, we can use the scripts `eval_net.py` and `eval_scores.py`.
-
-For example, to test the reference rgb stream model on split 1 of ucf 101 with 4 GPUs, run
-```
-python tools/eval_net.py ucf101 1 rgb FRAME_PATH \
- models/ucf101/tsn_bn_inception_rgb_deploy.prototxt models/ucf101_split_1_tsn_rgb_reference_bn_inception.caffemodel \
- --num_worker 4 --save_scores SCORE_FILE
-```
-where `FRAME_PATH` is the path you extracted the frames of UCF-101 to and `SCORE_FILE` is the filename to store the extracted scores.
-
-One can also use cached score files to evaluate the performance. To do this, issue the following command
-
-```
-python tools/eval_scores.py SCORE_FILE
-```
-
-The more important function of `eval_scores.py` is to do modality fusion.
-For example, once we got the scores of rgb stream in `RGB_SCORE_FILE` and flow stream in `FLOW_SCORE_FILE`.
-The fusion result with weights of `1:1.5` can be achieved with
-
-```
-python tools/eval_scores.py RGB_SCORE_FILE FLOW_SCORE_FILE --score_weights 1 1.5
-```
-
-To view the full help message of these scripts, run `python eval_net.py -h` or `python eval_scores.py -h`. 
-
 ## Training DTPP
 [[back to top](#DTPP)]
 
@@ -239,7 +194,3 @@ Jiagang Zhu: zhujiagang2015@ia.ac.cn
 
 [ucf101]:http://crcv.ucf.edu/data/UCF101.php
 [hmdb51]:http://serre-lab.clps.brown.edu/resource/hmdb-a-large-human-motion-database/
-[caffe]:https://github.com/yjxiong/caffe
-[df]:https://github.com/yjxiong/dense_flow
-[anaconda]:https://www.continuum.io/downloads
-[tsn_site]:http://yjxiong.me/others/tsn/
