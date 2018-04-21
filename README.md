@@ -1,5 +1,3 @@
-
-
 # DTPP
 
 This repository holds the codes and models for the paper
