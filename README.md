@@ -28,7 +28,7 @@ git clone --recursive https://github.com/zhujiagang/DTPP.git
 ```
 cd lib/
 ```
-compile ```caffe-tpp-net/``` with cmake and openmpi according to TSN for training models
+Please compile ```caffe-tpp-net/``` with cmake and openmpi according to TSN for training models
 and compile ```caffe-tpp-net-python/``` with python interface for evaluating models with python script.
 
 ### Get initialization models
