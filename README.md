@@ -34,7 +34,6 @@ We follow the guidance provided by TSN to prepare the data.
 # Usage Guide
 
 ## Prerequisites
-[[back to top](#DTPP)]
 
 There are a few dependencies to run the code. The major libraries we use are
 
@@ -46,7 +45,6 @@ The codebase is written in Python. We recommend the [Anaconda][anaconda] Python 
 ## Code & Data Preparation
 
 ### Get the code
-[[back to top](#DTPP)]
 
 Use git to clone this repository and its submodules
 ```
@@ -67,7 +65,6 @@ MPI_PREFIX=<root path to openmpi installation> bash build_all.sh MPI_ON
 ```
 
 ### Get the videos
-[[back to top](#DTPP)]
 
 We experimented on two mainstream action recognition datasets: [UCF-101][ucf101] and [HMDB51][hmdb51]. Videos can be downloaded directly from their websites.
 After download, please extract the videos from the `rar` archives.
@@ -81,7 +78,6 @@ for a in $(ls rars); do unrar x "rars/${a}" videos/; done;
 ```
 
 ### Get trained models
-[[back to top](#DTPP)]
 
 We provided the trained model weights in Caffe style, consisting of specifications in Protobuf messages, and model weights.
 In the codebase we provide the model spec for UCF101 and HMDB51.
@@ -92,7 +88,6 @@ bash scripts/get_reference_models.sh
 ```
 
 ## Extract Frames and Optical Flow Images
-[[back to top](#DTPP)]
 
 To run the training and testing, we need to decompose the video into frames. Also the DTPP need optical flow images for input.
  
@@ -110,7 +105,6 @@ bash scripts/extract_optical_flow.sh SRC_FOLDER OUT_FOLDER NUM_WORKER
 It will take from several hours to several days to extract optical flows for the whole datasets, depending on the number of GPUs.  
 
 ## Training DTPP
-[[back to top](#DTPP)]
 
 Training TSN is straightforward. We have provided the necessary model specs, solver configs, and initialization models.
 To achieve optimal training speed,
@@ -122,7 +116,6 @@ MPI_PREFIX=<root path to openmpi installation> bash build_all.sh MPI_ON
 where `root path to openmpi installation` points to the installation of the OpenMPI, for example `/usr/local/openmpi/`.
 
 ### Construct file lists for training and validation
-[[back to top](#DTPP)]
 
 The data feeding in training relies on `VideoDataLayer` in Caffe.
 This layer uses a list file to specify its data sources.
@@ -145,7 +138,6 @@ bash scripts/build_file_list.sh hmdb51 FRAME_PATH
 The generated list files will be put in `data/` with names like `ucf101_flow_val_split_2.txt`.
 
 ### Get initialization models
-[[back to top](#DTPP)]
 
 We have built the initialization model weights for both rgb and flow input.
 The flow initialization models implements the cross-modality training technique in the paper.
@@ -156,7 +148,6 @@ bash get_kinetics_pretraining_models.sh
 ```
 
 ### Start training
-[[back to top](#DTPP)]
 
 Once all necessities ready, we can start training DTPP.
 Fro example, if we want to train on HMDB51.
@@ -171,7 +162,6 @@ The aforementioned testing process can be used to evaluate them.
 
  
 #Other Info
-[[back to top](#DTPP)]
 
 ## Citation
 Please cite the following paper if you feel this repository useful.
