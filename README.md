@@ -44,7 +44,7 @@ bash get_kinetics_pretraining_models.sh
 [[back to top](#dtpp)]
 
 Once all necessities ready, we can start training DTPP.
-Fro example, if we want to train on HMDB51.
+For example, if we want to train on HMDB51.
 For example, the following command runs training on HMDB51 with rgb input, with its weights initialized by ImageNet pretraining.
 ```
 bash hmdb_scripts_split_1/train_rgb_tpp_delete_dropout_split_1.sh
