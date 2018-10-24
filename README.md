@@ -52,6 +52,18 @@ bash hmdb_scripts_split_1/train_rgb_tpp_delete_dropout_split_1.sh
 ```
 The learned model weights will be saved in `snapshot/`.
 
+### Start testing
+[[back to top](#dtpp)]
+
+The reader could refer to the 
+```
+eval_tpp_net_ucf.py
+eval_tpp_net_hmdb.py
+```
+and modify the path in the files to test the trained models.
+
+Our trained models will be released soon.
+
 ## Citation
 Please cite the following paper if you feel this repository useful.
 ```
