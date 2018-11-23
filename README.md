@@ -55,12 +55,17 @@ The learned model weights will be saved in `snapshot/`.
 ### Start testing
 [[back to top](#dtpp)]
 
-The reader could refer to the 
+The reader can refer to the 
 ```
 eval_tpp_net_ucf.py
 eval_tpp_net_hmdb.py
 ```
 and modify the path in the files to test the trained models.
+
+For the fusion of two streams and MIFS, iDT, please refer to the 
+```
+eval_scores_rgb_flow.py
+```
 
 Our trained models will be released soon.
 
