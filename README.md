@@ -71,7 +71,8 @@ For the fusion of two streams and MIFS, iDT, please refer to the
 eval_scores_rgb_flow.py
 ```
 
-Our trained models will be released soon.
+Our trained models have been released in [[BaiduYun](https://pan.baidu.com/s/1K1hl_1dlmQ-jnaSR0IH7eA)], with extraction password：fuuq.
+
 
 ## Citation
 Please cite the following paper if you feel this repository useful.
